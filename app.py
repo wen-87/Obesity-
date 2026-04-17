@@ -99,7 +99,23 @@ elif page == "Prediction":
 
         result = label_encoder.inverse_transform(pred)
         st.success(f"Predicted Obesity Level: {result[0]}")
+bmi_val = weight / (height ** 2)
 
+if bmi_val < 18.5:
+    bmi_cat = "Insufficient Weight"
+elif bmi_val < 25:
+    bmi_cat = "Normal Weight"
+elif bmi_val < 30:
+    bmi_cat = "Overweight"
+elif bmi_val < 35:
+    bmi_cat = "Obesity Type I"
+elif bmi_val < 40:
+    bmi_cat = "Obesity Type II"
+else:
+    bmi_cat = "Obesity Type III"
+
+st.info(f"BMI: {bmi_val:.2f}")
+st.info(f"BMI Category: {bmi_cat}")
 elif page == "Model Comparison":
     st.title("Model Comparison")
 
